@@ -3,22 +3,22 @@ var mongoose = restful.mongoose;
 var Schema = mongoose.Schema;
 
 var placeProfile = new Schema({
-    "type_of_place": {"type": "string","required": true, default:null},
-    "seat_with_table": {"type": ["string"],"required": true, default:null},
-    "reception_or_desk": {"type": "string","required": true, default:null},
-    "internet_wifi": {"type": "string","required": true, default:null},
-    "sound_level": {"type": "string","required": true, default:null},
-    "is_crowded": {"type": "string","required": true, default:null},
-    "pets_allowed": {"type": "boolean","required": true, default:null},
-    "power": {"type": "string","required": true, default:null},
-    "printing": {"type": "string","required": true, default:null},
-    "postal_service": {"type": "string","required": true, default:null},
-    "parking": {"type": "string","required": true, default:null},
-    "other_facilities": {"type": ["string"],"required": true, default:null},
-    "comments_to_facilities": {"type": "string","required": true, default:null},
-    "profile_image1": {"type": "string","required": true, default:null},
-    "profile_image2": {"type": "string", default:null},
-    "profile_image3": {"type": "string", default:null}
+    "type_of_place": {"type": "string","required": true},
+    "seat_with_table": {"type": ["string"],"required": true},
+    "reception_or_desk": {"type": "string","required": true},
+    "internet_wifi": {"type": "string","required": true},
+    "sound_level": {"type": "string","required": true},
+    "is_crowded": {"type": "string","required": true},
+    "pets_allowed": {"type": "boolean","required": true},
+    "power": {"type": "string","required": true},
+    "printing": {"type": "string","required": true},
+    "postal_service": {"type": "string","required": true},
+    "parking": {"type": "string","required": true},
+    "other_facilities": {"type": ["string"],"required": true},
+    "comments_to_facilities": {"type": "string","required": true},
+    "profile_image1": {"type": "string","required": true},
+    "profile_image2": {"type": "string"},
+    "profile_image3": {"type": "string"}
   }, {
 	versionKey: false
 })

@@ -21,61 +21,25 @@
   */
 
   function Combine(req, cb) {
+      var id = req.params.id;
+      var result =[];
+      PlaceProfile.findOne({_id: id}).exec(function (err, place_profile_doc) {
+        if (place_profile_doc != null) {
+              Offer.findOne({_id: place_profile_doc._id}).exec(function (err,offer_doc ) {
+                if (place_profile_doc != null) {
+                    result.push({offer : offer_doc});
+                    result.push({profile :place_profile_doc});
 
-
-    //   PlaceProfile.findOne({invoice_number: invoice_number}).exec(function (err, doc) {
-    //           if (doc != null) {
-    //               Offer.findOne({officer_id: doc.officer_id}).exec(function (err, user) {
-      //
-    //                   doc.invoice_notes.push({
-    //                       notes: notes,
-    //                       notes_by: admin_notes_by,
-    //                       notes_date: admin_notes_date,
-    //                       notes_type: "admin_notes"
-    //                   });
-      //
-    //                   doc['admin_notes'] = notes;
-    //                   doc['admin_notes_by'] = admin_notes_by;
-    //                   doc['admin_notes_date'] = admin_notes_date;
-      //
-    //                   doc.save(function (err) {
-    //                       if (!err) {
-    //                           if (sent == 1) {
-    //                               var result = {
-    //                                   status: 1,
-    //                                   message: "Notes saved and emailed successfully",
-    //                                   data: null
-    //                               }
-    //                               // GenerateInvoicePDF(invoice_number, sent);
-    //                           } else {
-    //                               var result = {
-    //                                   status: 1,
-    //                                   message: "Notes saved successfully",
-    //                                   data: null
-    //                               }
-    //                           }
-    //                       }
-    //                       cb(err, result);
-    //                   });
-    //               });
-    //           } else {
-    //               var result = {
-    //                   status: 0,
-    //                   message: "Invalid Invoice Number",
-    //                   data: null
-    //               }
-    //               cb(err, result);
-    //           }
-    //       });
-
-
-
-
-
-
-            cb(null, success('from cutom API', 1,"hiiii"));
+                    cb(null, success('from inner custom API', 1,result));
+                } else {
+                    cb(null, failure('from inner custom API',0,err));
+                }
+            });
+        } else {
+            cb(null, failure('from outer custom API',0,err));
+        }
+    });
   }
-
  module.exports = {
      Combine: Combine
   }

@@ -24,7 +24,7 @@ module.exports = function(app) {
   });
 
   Offer_model.register(app, '/offer');
-  app.get("/offer/custom", offer_ctrlr.combine);
+  app.get("/offer/custom/:id", offer_ctrlr.combine);
   PlaceProfile_model.register(app, '/place_profile');
 
 }
