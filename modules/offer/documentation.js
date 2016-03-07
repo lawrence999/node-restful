@@ -1,3 +1,6 @@
+// apidoc -i ./modules routes.js -o ./doc
+// npm install apidoc -g
+
 /**
 * @api {GET} /offer get all offers
 * @apiName getoffer

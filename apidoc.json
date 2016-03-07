@@ -1,0 +1,7 @@
+{
+  "name": "palaverplace API documentation",
+  "version": "0.1.0",
+  "description": "implementation of apidoc on express",
+  "title": "palaverplace api documentation",
+  "url" : " http://localhost:3000"
+}
