@@ -4,8 +4,9 @@
  * @package Webservices
  * @author Joseph Lawrence
  */
-// var offer = require('./modules/offer/offerController');
+var offer_ctrlr = require('./modules/offer/offerController');
 var Offer_model = require('./models/offer');
+var PlaceProfile_model = require('./models/place_profile');
 var config = require('./config');
 
 module.exports = function(app) {
@@ -23,4 +24,7 @@ module.exports = function(app) {
   });
 
   Offer_model.register(app, '/offer');
+  app.get("/offer/custom", offer_ctrlr.combine);
+  PlaceProfile_model.register(app, '/place_profile');
+
 }
