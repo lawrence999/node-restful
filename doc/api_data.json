@@ -1,0 +1,483 @@
+[
+  {
+    "type": "get",
+    "url": "/offer/custom/:id",
+    "title": "Request offer and Place Profile information",
+    "name": "Combine",
+    "group": "Offer",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>offer unique ID.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "number",
+            "optional": false,
+            "field": "status",
+            "description": "<p>1 for success.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>success message.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "number",
+            "optional": false,
+            "field": "code",
+            "description": "<p>code for this api.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "array",
+            "optional": false,
+            "field": "data",
+            "description": "<p>data returned from the API.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Example data on success",
+          "content": "\n{\n  \"status\": 1,\n  \"message\": \"from inner custom API\",\n  \"code\": 1,\n  \"data\": [\n    {\n      \"offer\": {\n        \"_id\": \"56dd1b247ee7eb2f149b1194\",\n        \"Offer_Type\": \"test\",\n        \"Offer_Booking_type\": \"test\",\n        \"Offer_Name\": \"test\",\n        \"Offer_Included_short\": \"test\",\n        \"Offer_Details\": \"test\",\n        \"Offer_Time_start\": \"2016-03-04T00:00:00.000Z\",\n        \"Offer_Time_end\": \"2016-03-04T00:00:00.000Z\",\n        \"Offer_Time_length\": 10,\n        \"Offer_Numbers\": 10,\n        \"Price_today\": 100,\n        \"Offer_Price_to_Guests\": 150,\n        \"Offer_How_to_book\": \"test\",\n        \"Offer_Active_Inactive\": \"test\",\n        \"Offer_Image\": \"test\",\n        \"Offer_Days\": [\n          \"mon\",\n          \"tue\"\n        ],\n        \"Offer_Inactive_dates\": [\n          \"2016-03-04T00:00:00.000Z\"\n        ]\n      }\n    },\n    {\n      \"profile\": {\n        \"_id\": \"56dd1b247ee7eb2f149b1194\",\n        \"type_of_place\": \"test\",\n        \"reception_or_desk\": \"test\",\n        \"internet_wifi\": \"test\",\n        \"sound_level\": \"test\",\n        \"is_crowded\": \"test\",\n        \"pets_allowed\": true,\n        \"power\": \"test\",\n        \"printing\": \"test\",\n        \"postal_service\": \"test\",\n        \"parking\": \"test\",\n        \"comments_to_facilities\": \"test\",\n        \"profile_image1\": \"test\",\n        \"profile_image2\": \"test\",\n        \"profile_image3\": \"test\",\n        \"other_facilities\": [\n          \"test\"\n        ],\n        \"seat_with_table\": [\n          \"test\"\n        ]\n      }\n    }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n  \"status\": 0,\n  \"message\": \"id not found\",\n  \"code\": 0,\n  \"data\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "modules/offer/offerService.js",
+    "groupTitle": "Offer"
+  },
+  {
+    "type": "Delete",
+    "url": "/offer/:id",
+    "title": "delete a particular offer",
+    "name": "deleteoffer",
+    "group": "Offer",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>offer unique ID which is to be deleted passed along the URL.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n  \"status\": 404,\n  \"message\": \"Object not found\",\n  \"name\": \"ObjectNotFound\",\n  \"errors\": {\n    \"_id\": {\n      \"message\": \"Could not find object with specified attributes\"\n    }\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "modules/offer/documentation.js",
+    "groupTitle": "Offer"
+  },
+  {
+    "type": "GET",
+    "url": "/offer",
+    "title": "get all offers",
+    "name": "getoffer",
+    "group": "Offer",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "array",
+            "optional": false,
+            "field": "data",
+            "description": "<p>array of offers returned from the API.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Example data on success",
+          "content": "[\n  {\n    \"_id\": \"56dd1b247ee7eb2f149b1194\",\n    \"Offer_Type\": \"test\",\n    \"Offer_Booking_type\": \"test\",\n    \"Offer_Name\": \"test\",\n    \"Offer_Included_short\": \"test\",\n    \"Offer_Details\": \"test\",\n    \"Offer_Time_start\": \"2016-03-04T00:00:00.000Z\",\n    \"Offer_Time_end\": \"2016-03-04T00:00:00.000Z\",\n    \"Offer_Time_length\": 10,\n    \"Offer_Numbers\": 10,\n    \"Price_today\": 100,\n    \"Offer_Price_to_Guests\": 150,\n    \"Offer_How_to_book\": \"test\",\n    \"Offer_Active_Inactive\": \"test\",\n    \"Offer_Image\": \"test\",\n    \"Offer_Days\": [\n      \"mon\",\n      \"tue\"\n    ],\n    \"Offer_Inactive_dates\": [\n      \"2016-03-04T00:00:00.000Z\"\n    ]\n  }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "modules/offer/documentation.js",
+    "groupTitle": "Offer"
+  },
+  {
+    "type": "get",
+    "url": "/offer/:id",
+    "title": "get particular offer details",
+    "name": "getoffer_id",
+    "group": "Offer",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>offer unique ID.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "data",
+            "description": "<p>data returned from the API.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Example data on success",
+          "content": "\n{\n  \"_id\": \"56dd1b247ee7eb2f149b1194\",\n  \"Offer_Type\": \"test\",\n  \"Offer_Booking_type\": \"test\",\n  \"Offer_Name\": \"test\",\n  \"Offer_Included_short\": \"test\",\n  \"Offer_Details\": \"test\",\n  \"Offer_Time_start\": \"2016-03-04T00:00:00.000Z\",\n  \"Offer_Time_end\": \"2016-03-04T00:00:00.000Z\",\n  \"Offer_Time_length\": 10,\n  \"Offer_Numbers\": 10,\n  \"Price_today\": 100,\n  \"Offer_Price_to_Guests\": 150,\n  \"Offer_How_to_book\": \"test\",\n  \"Offer_Active_Inactive\": \"test\",\n  \"Offer_Image\": \"test\",\n  \"Offer_Days\": [\n    \"mon\",\n    \"tue\"\n  ],\n  \"Offer_Inactive_dates\": [\n    \"2016-03-04T00:00:00.000Z\"\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "modules/offer/documentation.js",
+    "groupTitle": "Offer"
+  },
+  {
+    "type": "post",
+    "url": "/offer",
+    "title": "insert new offer details",
+    "name": "postoffer",
+    "group": "Offer",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "Offer_Type",
+            "description": "<p>Work spot, Mini conference, Job event, Others.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "Offer_Booking_type",
+            "description": "<p>Dropin, Book first - see details, Other.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "Offer_Name",
+            "description": "<p>name of the offer.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "Offer_Included_short",
+            "description": "<p>Shown in offer summary.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "Offer_Details",
+            "description": "<p>details of the offer.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "date",
+            "optional": false,
+            "field": "Offer_Time_start",
+            "description": "<p>offer start date.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "date",
+            "optional": false,
+            "field": "Offer_Time_end",
+            "description": "<p>offer end date.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "Offer_Time_length",
+            "description": "<p>number of hours that the offer is available.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "Offer_Numbers",
+            "description": "<p>Number of offers per time slot .</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "Price_today",
+            "description": "<p>Price today for same contents (inkl VAT).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "Offer_Price_to_Guests",
+            "description": "<p>Offer Price to Guests.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "Offer_How_to_book",
+            "description": "<p>description of how to book with the offer.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "Offer_Active_Inactive",
+            "description": "<p>Active,Paused,Delete.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "Offer_Image",
+            "description": "<p>offer image url.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "array",
+            "optional": false,
+            "field": "Offer_Days",
+            "description": "<p>Offer Days in week that the offer is valid.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "array",
+            "optional": false,
+            "field": "Offer_Inactive_dates",
+            "description": "<p>Offer Inactive dates .</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "data",
+            "description": "<p>data returned from the API.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Example data on success",
+          "content": "\n{\n  \"Offer_Type\": \"test\",\n  \"Offer_Booking_type\": \"test\",\n  \"Offer_Name\": \"test\",\n  \"Offer_Included_short\": \"test\",\n  \"Offer_Details\": \"test\",\n  \"Offer_Time_start\": \"2016-03-04T00:00:00.000Z\",\n  \"Offer_Time_end\": \"2016-03-04T00:00:00.000Z\",\n  \"Offer_Time_length\": 10,\n  \"Offer_Numbers\": 10,\n  \"Price_today\": 100,\n  \"Offer_Price_to_Guests\": 150,\n  \"Offer_How_to_book\": \"test\",\n  \"Offer_Active_Inactive\": \"test\",\n  \"Offer_Image\": \"test\",\n  \"_id\": \"56dd78137d13dbc0435fb13c\",\n  \"Offer_Days\": [\n    \"mon\",\n    \"tue\"\n  ],\n  \"Offer_Inactive_dates\": [\n    \"2016-03-04T00:00:00.000Z\"\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "modules/offer/documentation.js",
+    "groupTitle": "Offer"
+  },
+  {
+    "type": "put",
+    "url": "/offer/:id",
+    "title": "update an existing offer",
+    "name": "putoffer",
+    "group": "Offer",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>offer unique ID that should be passed in the URL.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "Offer_Type",
+            "description": "<p>Work spot, Mini conference, Job event, Others.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "Offer_Booking_type",
+            "description": "<p>Dropin, Book first - see details, Other.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "Offer_Name",
+            "description": "<p>name of the offer.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "Offer_Included_short",
+            "description": "<p>Shown in offer summary.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "Offer_Details",
+            "description": "<p>details of the offer.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "date",
+            "optional": false,
+            "field": "Offer_Time_start",
+            "description": "<p>offer start date.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "date",
+            "optional": false,
+            "field": "Offer_Time_end",
+            "description": "<p>offer end date.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "Offer_Time_length",
+            "description": "<p>number of hours that the offer is available.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "Offer_Numbers",
+            "description": "<p>Number of offers per time slot .</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "Price_today",
+            "description": "<p>Price today for same contents (inkl VAT).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "Offer_Price_to_Guests",
+            "description": "<p>Offer Price to Guests.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "Offer_How_to_book",
+            "description": "<p>description of how to book with the offer.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "Offer_Active_Inactive",
+            "description": "<p>Active,Paused,Delete.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "Offer_Image",
+            "description": "<p>offer image url.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "array",
+            "optional": false,
+            "field": "Offer_Days",
+            "description": "<p>Offer Days in week that the offer is valid.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "array",
+            "optional": false,
+            "field": "Offer_Inactive_dates",
+            "description": "<p>Offer Inactive dates .</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "data",
+            "description": "<p>data returned from the API.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Example data on success",
+          "content": "\n{\n  \"_id\": \"56dd1b247ee7eb2f149b1194\",\n  \"Offer_Type\": \"updated\",\n  \"Offer_Booking_type\": \"test\",\n  \"Offer_Name\": \"test\",\n  \"Offer_Included_short\": \"test\",\n  \"Offer_Details\": \"test\",\n  \"Offer_Time_start\": \"2016-03-04T00:00:00.000Z\",\n  \"Offer_Time_end\": \"2016-03-04T00:00:00.000Z\",\n  \"Offer_Time_length\": 10,\n  \"Offer_Numbers\": 10,\n  \"Price_today\": 100,\n  \"Offer_Price_to_Guests\": 150,\n  \"Offer_How_to_book\": \"test\",\n  \"Offer_Active_Inactive\": \"test\",\n  \"Offer_Image\": \"test\",\n  \"Offer_Days\": [\n    \"mon\",\n    \"tue\"\n  ],\n  \"Offer_Inactive_dates\": [\n    \"2016-03-04T00:00:00.000Z\"\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "modules/offer/documentation.js",
+    "groupTitle": "Offer"
+  }
+]
